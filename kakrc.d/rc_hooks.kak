@@ -16,3 +16,8 @@ hook global WinSetOption filetype=rust %{
         map window user 1 ':nop %sh{cargo fmt}<ret>'
 }
 
+# python hooks for formatting
+hook global WinSetOption filetype=python %{
+	set-option window formatcmd 'indent'
+	hook buffer -group pyfmt BufWritePre .* format
+}

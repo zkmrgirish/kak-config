@@ -30,3 +30,4 @@ map global user <tab> '/\[--\]<ret>c' -docstring 'search for next [--] identifie
 
 # gopls related mappings
 map global user k :lsp-hover<ret> -docstring 'get documentation for identifier uder cursor'
+

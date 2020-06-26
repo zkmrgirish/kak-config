@@ -22,17 +22,17 @@ hook global KakBegin .* %{
 }
 
 # set grep command to git grep if possible
-hook global KakBegin .* %{
-    evaluate-commands %sh{
-        path="$PWD"
-        while [ "$path" != "$HOME" ] && [ "$path" != "/" ]; do
-        	if [ -e "./.git/" ]; then
-        		printf "%s\n" "set-option global grepcmd 'git grep -Hn'"
-        		break
-        	else
-        		cd ..
-        		path="$PWD"
-        	fi
-        done
-    }
-}
+# hook global KakBegin .* %{
+#     evaluate-commands %sh{
+#         path="$PWD"
+#         while [ "$path" != "$HOME" ] && [ "$path" != "/" ]; do
+#         	if [ -e "./.git/" ]; then
+#         		printf "%s\n" "set-option global grepcmd 'git grep -Hn'"
+#         		break
+#         	else
+#         		cd ..
+#         		path="$PWD"
+#         	fi
+#         done
+#     }
+# }

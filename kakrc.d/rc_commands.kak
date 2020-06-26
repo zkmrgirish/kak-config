@@ -6,8 +6,8 @@ define-command time -params 0 %{ echo %sh{ date +'%I:%M %p' } }
 
 # git ls-files fuzzy search
 define-command -docstring \
-"git-edit <filename>: search for files using git ls-files" \
-git-edit -params 1 -shell-script-candidates %{ git ls-files } %{ edit %arg{1} }
+"gfind <filename>: search for files using git ls-files" \
+gfind -params 1 -shell-script-candidates %{ git ls-files } %{ edit %arg{1} }
 
 # fuzzy search like vim find
 define-command -docstring \
