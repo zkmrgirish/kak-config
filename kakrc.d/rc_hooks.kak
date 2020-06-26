@@ -21,3 +21,16 @@ hook global WinSetOption filetype=python %{
 	set-option window formatcmd 'indent'
 	hook buffer -group pyfmt BufWritePre .* format
 }
+
+# hooks for visual feedback of modechange
+hook global ModeChange ".*:normal" %{
+    set-option global ui_options ncurses_wheel_scroll_amount=2 ncurses_enable_mouse=true ncurses_assistant=none
+    set-face global PrimaryCursor black,white+Ffg
+    set-face global StatusLine cyan,default
+}
+
+hook global ModeChange ".*:insert" %{
+    set-option global ui_options ncurses_enable_mouse=false ncurses_assistant=none
+    set-face global PrimaryCursor black,rgb:eddb81+Ffg
+    set-face global StatusLine cyan,default
+}

@@ -23,11 +23,11 @@ define-command import -params 1 %{
     }
 }
 
-import rc_options
 import rc_commands
 import rc_mappings
 import rc_hooks
 import rc_misc
+import rc_options
 
 # enable kakoune lsp support
 eval %sh{kak-lsp --kakoune -s $kak_session}
