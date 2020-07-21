@@ -4,14 +4,16 @@ hook global WinSetOption filetype=go %{
     hook buffer -group GoFmt BufWritePre .* format
     set-option window formatcmd 'goimports'
     hook buffer -group GoFmt BufWritePre .* format
-    set-option window makecmd 'go build'
+    set-option window makecmd 'go'
 }
 
 # rust hooks for formatting check and build
 hook global WinSetOption filetype=rust %{
         set-option window formatcmd 'rustfmt'
         set-option window lintcmd 'cargo check'
-        set-option window makecmd 'cargo build'
+        set-option window makecmd 'cargo'
+
+        alias window c make
 
         map window user 1 ':nop %sh{cargo fmt}<ret>'
 }

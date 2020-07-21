@@ -7,6 +7,7 @@ source "%val{config}/plugins/plug.kak/rc/plug.kak"
 plug "andreyorst/fzf.kak"
 plug "alexherbo2/auto-pairs.kak"
 plug "andreyorst/smarttab.kak"
+plug "TeddyDD/kakoune-wiki"
 plug "andreyorst/kaktree" config %{
     hook global WinSetOption filetype=kaktree %{
         remove-highlighter buffer/numbers
@@ -28,6 +29,9 @@ import rc_mappings
 import rc_hooks
 import rc_misc
 import rc_options
+
+# kakwiki setup
+wiki-setup %sh{ echo $HOME/wiki }
 
 # enable kakoune lsp support
 eval %sh{kak-lsp --kakoune -s $kak_session}

@@ -16,7 +16,8 @@ map global user T ':terminal zsh<ret>' -docstring 'open terminal in current dire
 
 # fzf search, kak-tree
 map global user f :fzf-mode<ret> -docstring 'fuzzy search for files, buffer, lines etc.'
-map global user r :kaktree-toggle<ret> -docstring 'open or close kaktree for file explorer'
+map global user r :lsp-references<ret> -docstring 'search for references of variable'
+# map global user r :kaktree-toggle<ret> -docstring 'open or close kaktree for file explorer'
 
 # vim like search patterns
 map global user * <a-i>w*/<ret> -docstring 'search for all occurances of selected text'
@@ -30,4 +31,3 @@ map global user <tab> '/\[--\]<ret>c' -docstring 'search for next [--] identifie
 
 # gopls related mappings
 map global user k :lsp-hover<ret> -docstring 'get documentation for identifier uder cursor'
-

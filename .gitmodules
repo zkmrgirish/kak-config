@@ -13,3 +13,6 @@
 [submodule "plugins/plug.kak"]
 	path = plugins/plug.kak
 	url = https://github.com/andreyorst/plug.kak
+[submodule "plugins/kakoune-wiki"]
+	path = plugins/kakoune-wiki
+	url = git@github.com:TeddyDD/kakoune-wiki.git

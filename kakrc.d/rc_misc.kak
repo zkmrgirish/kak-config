@@ -1,4 +1,3 @@
-# keep simple color-scheme
 colorscheme desertex
 
 # highlighters
