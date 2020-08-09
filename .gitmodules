@@ -16,3 +16,6 @@
 [submodule "plugins/kakoune-wiki"]
 	path = plugins/kakoune-wiki
 	url = git@github.com:TeddyDD/kakoune-wiki.git
+[submodule "plugins/kakoune-plain"]
+	path = plugins/kakoune-plain
+	url = git@github.com:zkmrgirish/kakoune-plain.git

@@ -1,8 +1,4 @@
-colorscheme desertex
-
-# highlighters
-set-face global comment rgb:7bcc7b+fga
-set-face global BufferPadding rgb:404040
+colorscheme kakoune-plain
 
 # find tags file and set ctagsfiles
 hook global KakBegin .* %{
@@ -19,3 +15,4 @@ hook global KakBegin .* %{
         done
     }
 }
+

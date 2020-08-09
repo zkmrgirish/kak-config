@@ -8,6 +8,7 @@ plug "andreyorst/fzf.kak"
 plug "alexherbo2/auto-pairs.kak"
 plug "andreyorst/smarttab.kak"
 plug "TeddyDD/kakoune-wiki"
+plug "zkmrgirish/kakoune-plain" theme
 plug "andreyorst/kaktree" config %{
     hook global WinSetOption filetype=kaktree %{
         remove-highlighter buffer/numbers
@@ -36,3 +37,6 @@ wiki-setup %sh{ echo $HOME/wiki }
 # enable kakoune lsp support
 eval %sh{kak-lsp --kakoune -s $kak_session}
 lsp-enable
+
+# disable esc in insert mode
+map global insert <esc> "<a-;>:info 'use jk instead of esc key'<ret>"

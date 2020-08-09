@@ -28,3 +28,39 @@ sfind -params 1 -shell-script-candidates %{ kakfind } %{ iterm-terminal-horizont
 define-command -docstring \
 "tfind <filename>: search for file and open in new window"\
 tfind -params 1 -shell-script-candidates %{ kakfind } %{ iterm-terminal-tab kak -c %val{session} -e "edit %arg{1}" }
+
+# kakoune ide mode
+define-command ide %{
+    rename-client main
+    set global jumpclient main
+
+	iterm-terminal-vertical kak -c %val{session} -e "kaktree-cmd"
+	set global toolsclient tools
+} -docstring "init ide mode with jumpclient and toolsclient"
+
+# open kaktree
+define-command ktree %{
+    try %{
+        evaluate-commands -client %opt{toolsclient} buffer *kaktree*
+    } catch %{
+        iterm-terminal-vertical kak -c %val{session} -e "kaktree-cmd"
+    }
+    focus %opt{toolsclient}
+}
+
+# change to camelcase
+def camelcase %{
+  exec '`s[-_<space>]<ret>d~<a-i>w'
+}
+
+# foo bar → foo_bar
+def snakecase %{
+  exec '<a-:><a-;>s-|[a-z][A-Z]<ret>;a<space><esc>s[-\s]+<ret>c_<esc><a-i>w`'
+}
+
+# fooBar → foo-bar
+# foo_bar → foo-bar
+# foo bar → foo-bar
+def kebabcase %{
+  exec '<a-:><a-;>s_|[a-z][A-Z]<ret>;a<space><esc>s[_\s]+<ret>c-<esc><a-i>w`'
+}

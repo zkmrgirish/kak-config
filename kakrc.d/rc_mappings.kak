@@ -6,7 +6,7 @@ map global normal D Gld -docstring 'delete to end of the line'
 map global normal Y Gly -docstring 'yank to end of the line'
 
 # comment or uncomment selection
-map global user c :comment-line<ret> -docstring 'comment line'
+map global normal '#' :comment-line<ret> -docstring 'comment line'
 
 # ctags search selection
 map global user t <a-i>w:ctags-search<ret> -docstring 'search word under the cursor using ctags'
@@ -31,3 +31,8 @@ map global user <tab> '/\[--\]<ret>c' -docstring 'search for next [--] identifie
 
 # gopls related mappings
 map global user k :lsp-hover<ret> -docstring 'get documentation for identifier uder cursor'
+
+# open ide mode
+map global normal <a-1> :ide<ret> -docstring 'init ide mode with jumpclient and toolsclient'
+
+map global normal <a-2> :ktree<ret> -docstring 'open kaktree if toolsclient is available else create' 
