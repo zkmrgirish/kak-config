@@ -12,6 +12,7 @@ map global user g ": enter-user-mode -lock grep<ret>" -docstring "grep mode"
 map global user m ": enter-user-mode -lock keep<ret>" -docstring "filter selections"
 map global user t ": enter-user-mode trim<ret>" -docstring "trim selection part"
 map global user r ": enter-user-mode rotation<ret>" -docstring "rotate selection"
+map global user e ": enter-user-mode  easymotion<ret>" -docstring "easymotion mode"
 
 
 # open ide mode
