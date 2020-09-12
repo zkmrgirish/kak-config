@@ -20,6 +20,12 @@ entity_name_namespace = "module"
 # set to 0 to disable
 timeout = 1800 # seconds = 30 minutes
 
+[language.terraform]
+filetypes = ["terraform", "tf"]
+roots = ["providers.tf"]
+command = "terraform-ls"
+args = ["serve"]
+
 [language.rust]
 filetypes = ["rust"]
 roots = ["Cargo.toml"]

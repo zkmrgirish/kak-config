@@ -29,6 +29,7 @@ import rc_commands
 import rc_mappings
 import rc_hooks
 import rc_misc
+import rc_magic
 import rc_options
 
 # kakwiki setup
@@ -37,6 +38,3 @@ wiki-setup %sh{ echo $HOME/wiki }
 # enable kakoune lsp support
 eval %sh{kak-lsp --kakoune -s $kak_session}
 lsp-enable
-
-# disable esc in insert mode
-map global insert <esc> "<a-;>:info 'use jk instead of esc key'<ret>"

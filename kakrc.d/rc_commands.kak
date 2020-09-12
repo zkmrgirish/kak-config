@@ -30,13 +30,24 @@ define-command -docstring \
 tfind -params 1 -shell-script-candidates %{ kakfind } %{ iterm-terminal-tab kak -c %val{session} -e "edit %arg{1}" }
 
 # kakoune ide mode
-define-command ide %{
+define-command ide -params 0..1 %{
+    # change session
+	try %{
+		rename-session %arg{1}
+	}
+
+	# main client
     rename-client main
     set global jumpclient main
 
-	iterm-terminal-vertical kak -c %val{session} -e "kaktree-cmd"
-	set global toolsclient tools
-} -docstring "init ide mode with jumpclient and toolsclient"
+	# tools & docs client
+	new rename-client tools
+	
+    # tools & docs client
+    set global docsclient tools
+    set global toolsclient tools
+    iterm-terminal-horizontal zsh
+} -docstring "turn kakoune into IDE"
 
 # open kaktree
 define-command ktree %{
@@ -64,3 +75,17 @@ def snakecase %{
 def kebabcase %{
   exec '<a-:><a-;>s_|[a-z][A-Z]<ret>;a<space><esc>s[_\s]+<ret>c-<esc><a-i>w`'
 }
+
+define-command -hidden -params 2 inc %{
+  evaluate-commands %sh{
+    if [ "$1" = 0 ]
+    then
+	count=1
+    else
+	count="$1"
+    fi
+    printf '%s%s\n' 'exec h"_/\d<ret><a-i>na' "$2($count)<esc>|bc<ret>h"
+  }
+}
+map global normal <c-a> ':inc %val{count} +<ret>'
+map global normal <c-x> ':inc %val{count} -<ret>'
