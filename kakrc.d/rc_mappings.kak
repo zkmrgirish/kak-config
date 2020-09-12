@@ -1,31 +1,19 @@
-# spell checking mappings
-map global user s <a-i>w:spell-replace<ret> -docstring 'spell replace for word under the cursor'
-
 # comment or uncomment selection
 map global normal '#' :comment-line<ret> -docstring 'comment line'
-
-# fzf search, kak-tree
-map global user f :fzf-mode<ret> -docstring 'fuzzy search for files, buffer, lines etc.'
-# map global user r :kaktree-toggle<ret> -docstring 'open or close kaktree for file explorer'
 
 # vim like search patterns
 map global user * <a-i>w*/<ret> -docstring 'search for all occurances of selected text'
 
-# grep search
-map global user n :grep-next-match<ret> -docstring 'next match of pattern in grep search'
-map global user p :grep-previous-match<ret> -docstring 'next match of pattern in grep search'
+# some custom user modes
+map global user f :fzf-mode<ret> -docstring 'fuzzy search for files, buffer, lines etc.'
+map global user l ": enter-user-mode lsp-mode<ret>" -docstring "enter lsp use mode"
+map global user s ": enter-user-mode -lock spell<ret>" -docstring "spell mode"
+map global user g ": enter-user-mode -lock grep<ret>" -docstring "grep mode"
+map global user m ": enter-user-mode -lock keep<ret>" -docstring "filter selections"
+map global user t ": enter-user-mode trim<ret>" -docstring "trim selection part"
+map global user r ": enter-user-mode rotation<ret>" -docstring "rotate selection"
 
-# lsp document symbol
-map global user ] :lsp-symbols-next-match<ret> -docstring 'next match document symbol table'
-map global user [ :lsp-symbols-previous-match<ret> -docstring 'previous match document symbol table'
-
-# goto [--] identifier
-map global user <tab> '/\[--\]<ret>c' -docstring 'search for next [--] identifier'
-
-# gopls related mappings
-map global user k :lsp-hover<ret> -docstring 'get documentation for identifier uder cursor'
 
 # open ide mode
 map global normal <a-1> :ide<ret> -docstring 'init ide mode with jumpclient and toolsclient'
-
 map global normal <a-2> :ktree<ret> -docstring 'open kaktree if toolsclient is available else create' 

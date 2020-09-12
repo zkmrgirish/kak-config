@@ -30,6 +30,8 @@ import rc_mappings
 import rc_hooks
 import rc_misc
 import rc_magic
+import rc_mirror
+import rc_usermodes
 import rc_options
 
 # kakwiki setup

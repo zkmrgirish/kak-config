@@ -2,7 +2,9 @@
 def suspend-and-resume \
     -params 1..2 \
     -docstring 'suspend-and-resume <cli command> [<kak command after resume>]: backgrounds current kakoune client and runs specified cli command.  Upon exit of command the optional kak command is executed.' \
-    %{ evaluate-commands %sh{
+    %{
+    try %{ tq }
+   	evaluate-commands %sh{
 
     # Note we are adding '&& fg' which resumes the kakoune client process after the cli command exits
     cli_cmd="$1 && fg"
@@ -12,7 +14,7 @@ def suspend-and-resume \
     platform=$(uname -s)
     case $platform in
         Darwin)
-            automate_cmd="sleep 0.01; osascript -e 'tell application \"System Events\" to keystroke \"$cli_cmd\\n\" '"
+            automate_cmd="sleep 0.01; osascript -e 'tell application \"System Events\" to keystroke \"$cli_cmd\" & return '"
             kill_cmd="/bin/kill"
             break
             ;;
@@ -44,13 +46,13 @@ def tig-blame -override -docstring 'Open blame in tig for current file and line'
     suspend-and-resume "tig blame +%val{cursor_line} %val{buffile}" 
 }
 
-declare-user-mode tig
-map global tig l ': suspend-and-resume "lazygit"<ret>' -docstring 'use lazygit instead'
-map global tig b ': tig-blame<ret>' -docstring 'show blame (with tig)'
-map global tig s ': suspend-and-resume "tig status"<ret>' -docstring 'show git status (with tig)'
-map global tig m ': suspend-and-resume "tig"<ret>' -docstring 'show main view (with tig)'
+declare-user-mode git
+map global git l ': suspend-and-resume "lazygit"<ret>' -docstring 'use lazygit for git operations'
+map global git b ': tig-blame<ret>' -docstring 'show blame (with tig)'
+map global git p ': suspend-and-resume "git push origin HEAD"<ret>' -docstring 'git push origin HEAD'
+map global git r ': suspend-and-resume "gh pr create -B master"<ret>' -docstring 'create pr against master'
 
-map global user t ': enter-user-mode tig<ret>' -docstring 'tig commands'
+map global user t ': enter-user-mode git<ret>' -docstring 'git command mode'
 
 
 # -------------------------------------------------------------------------------

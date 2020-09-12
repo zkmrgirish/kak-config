@@ -29,24 +29,27 @@ define-command -docstring \
 "tfind <filename>: search for file and open in new window"\
 tfind -params 1 -shell-script-candidates %{ kakfind } %{ iterm-terminal-tab kak -c %val{session} -e "edit %arg{1}" }
 
+# quit tools client
+define-command tq "evaluate-commands -client tools q" -docstring "quit tools client"
+
 # kakoune ide mode
 define-command ide -params 0..1 %{
     # change session
-	try %{
-		rename-session %arg{1}
-	}
+    try %{
+        rename-session %arg{1}
+    }
 
 	# main client
     rename-client main
     set global jumpclient main
 
-	# tools & docs client
-	new rename-client tools
-	
     # tools & docs client
     set global docsclient tools
     set global toolsclient tools
-    iterm-terminal-horizontal zsh
+    
+	# tools & docs client
+	new rename-client tools
+	focus main
 } -docstring "turn kakoune into IDE"
 
 # open kaktree

@@ -1,5 +1,7 @@
 colorscheme kakoune-plain
 
+alias global E enter-user-mode
+
 # find tags file and set ctagsfiles
 hook global KakBegin .* %{
     evaluate-commands %sh{
