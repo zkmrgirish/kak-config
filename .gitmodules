@@ -19,3 +19,6 @@
 [submodule "plugins/kakoune-plain"]
 	path = plugins/kakoune-plain
 	url = git@github.com:zkmrgirish/kakoune-plain.git
+[submodule "plugins/kak-todo"]
+	path = plugins/kak-todo
+	url = git@github.com:zkmrgirish/kak-todo.git

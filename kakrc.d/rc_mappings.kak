@@ -13,6 +13,8 @@ map global user m ": enter-user-mode -lock keep<ret>" -docstring "filter selecti
 map global user t ": enter-user-mode trim<ret>" -docstring "trim selection part"
 map global user r ": enter-user-mode rotation<ret>" -docstring "rotate selection"
 map global user e ": enter-user-mode  easymotion<ret>" -docstring "easymotion mode"
+map global user n %{: e ~/Dropbox/wiki/notes.md<ret>ge2o<esc><space>!date +'### %Y.%m.%d@%H:%M:%S'<ret>o<esc>} -docstring "Note a thing"
+map global user T ": todo-open-default-project<ret>" -docstring "open default todo project"
 
 
 # open ide mode

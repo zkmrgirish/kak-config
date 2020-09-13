@@ -9,6 +9,7 @@ plug "alexherbo2/auto-pairs.kak"
 plug "andreyorst/smarttab.kak"
 plug "TeddyDD/kakoune-wiki"
 plug "zkmrgirish/kakoune-plain" theme
+plug "zkmrgirish/kak-todo"
 plug "andreyorst/kaktree" config %{
     hook global WinSetOption filetype=kaktree %{
         remove-highlighter buffer/numbers
